@@ -17,14 +17,13 @@ Biriniz bir şey değiştirince diğeri en geç 30 saniye içinde görür.
 > sizden başka kimse göremez.
 
 ### 2 · Site deposu
-1. GitHub → **New repository** → ad: `apartman` · **Public** · Create
-2. Bu klasördeki dosyaları yükle — **ama `ozel-repoya-yukle` klasörünü ve Excel dosyasını yükleme**
-   (`.gitignore` bunu zaten engelliyor)
+1. GitHub → **New repository** → ad: `terra-panorama` · **Public** (zaten açtın) · Create
+2. Dosyalar yüklendi (`ozel-repoya-yukle` ve Excel hariç — orada malik isimleri var)
 3. Repo → **Settings → Pages** → Source: `Deploy from a branch` → Branch: `main` / `root` → Save
-4. Bir iki dakika sonra siten hazır: `https://KULLANICIADIN.github.io/apartman/`
+4. Bir iki dakika sonra siten hazır: `https://umutlaguler.github.io/terra-panorama/`
 
 ### 3 · Erişim anahtarı
-Sitedeki `kurulum.html` sayfasını aç (`https://…github.io/apartman/kurulum.html`)
+Sitedeki `kurulum.html` sayfasını aç (`https://umutlaguler.github.io/terra-panorama/kurulum.html`)
 ve oradaki adımları izle:
 - GitHub'da **fine-grained token** üret (sadece `apartman-veri` deposuna, `Contents: Read and write`)
 - Anahtarı + belirlediğin **ortak şifreyi** gir
