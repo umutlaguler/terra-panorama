@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f1115">
+<title>Terra Panorama · Yönetim</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏢</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- ══════════ GİRİŞ ══════════ -->
+<section id="gate" class="gate">
+  <div class="gate-card">
+    <div class="gate-brand">
+      <div class="logo">TP</div>
+      <div>
+        <h1>Terra Panorama</h1>
+        <p>Site Yönetim Paneli</p>
+      </div>
+    </div>
+
+    <label class="field">
+      <span>Kim giriyor?</span>
+      <select id="gateUser"></select>
+    </label>
+
+    <label class="field">
+      <span>Şifre</span>
+      <input id="gatePass" type="password" placeholder="Ortak şifre" autocomplete="current-password" spellcheck="false">
+    </label>
+
+    <button id="gateBtn" class="btn btn-primary btn-block">Giriş yap</button>
+    <p id="gateErr" class="gate-err" hidden></p>
+    <p class="gate-note">Şifreyi bilmiyorsanız yöneticiden isteyin.</p>
+  </div>
+</section>
+
+<!-- ══════════ UYGULAMA ══════════ -->
+<div id="app" hidden>
+  <header class="topbar">
+    <div class="topbar-in">
+      <div class="brand">
+        <div class="logo sm">TP</div>
+        <div class="brand-txt">
+          <strong id="siteName">Terra Panorama</strong>
+          <span>Site Yönetimi</span>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button id="syncBtn" class="chip" title="Yenile"><span class="dot" id="syncDot"></span><span id="syncTxt">Hazır</span></button>
+        <button id="themeBtn" class="icon-btn" title="Tema" aria-label="Tema değiştir">◐</button>
+        <button class="user-chip" id="userChip" title="Çıkış yap">–</button>
+      </div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button data-view="panel" class="on">Panel</button>
+      <button data-view="aidat">Aidat</button>
+      <button data-view="kasa">Gelir / Gider</button>
+      <button data-view="isler">Yapılacaklar</button>
+      <button data-view="daireler">Daireler</button>
+      <button data-view="ayarlar">Ayarlar</button>
+    </nav>
+  </header>
+
+  <main id="main"></main>
+  <footer class="foot">Terra Panorama Site Yönetimi</footer>
+</div>
+
+<div id="modalRoot"></div>
+<div id="toast" class="toast" hidden></div>
+
+<script src="config.js"></script>
+<script src="vault.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

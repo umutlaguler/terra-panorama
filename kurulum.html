@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kurulum · Terra Panorama</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .wrap{max-width:620px;margin:0 auto;padding:40px 20px 80px}
+  .step{margin-bottom:22px}
+  .step h3{font-size:15px;margin-bottom:4px}
+  .step h3 i{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:99px;
+    background:var(--accent);color:#fff;font-size:11.5px;font-weight:700;font-style:normal;margin-right:8px;vertical-align:1px}
+  .step p{margin:0 0 12px 30px;color:var(--ink-2);font-size:13px;line-height:1.6}
+  .step .inner{margin-left:30px}
+  ol{margin:0 0 12px 30px;padding-left:16px;color:var(--ink-2);font-size:13px;line-height:1.8}
+  code{background:var(--surface-2);padding:2px 6px;border-radius:6px;font-size:12px}
+  pre{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:14px;
+    overflow-x:auto;font-size:12px;line-height:1.6;white-space:pre-wrap;word-break:break-all}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="gate-brand" style="margin-bottom:28px">
+    <div class="logo">TP</div>
+    <div><h1 style="font-size:19px">Kurulum</h1><p style="margin:2px 0 0;color:var(--ink-3);font-size:13px">Bunu yalnızca bir kez, bir kişi yapar</p></div>
+  </div>
+
+  <div class="card"><div class="card-b">
+
+    <div class="step">
+      <h3><i>1</i>Verilerin tutulacağı özel depo</h3>
+      <ol>
+        <li>GitHub'da <b>New repository</b> → ad: <code>apartman-veri</code> → <b>Private</b> seç → oluştur.</li>
+        <li>Bu klasördeki <code>ozel-repoya-yukle/data.json</code> dosyasını o depoya yükle (Add file → Upload files).</li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <h3><i>2</i>Erişim anahtarı üret</h3>
+      <ol>
+        <li>GitHub → Settings → Developer settings → <b>Personal access tokens</b> → <b>Fine-grained tokens</b> → Generate new token.</li>
+        <li>Expiration: <b>No expiration</b> (veya 1 yıl).</li>
+        <li>Repository access: <b>Only select repositories</b> → sadece <code>apartman-veri</code>.</li>
+        <li>Permissions → Repository permissions → <b>Contents: Read and write</b>.</li>
+        <li>Oluştur ve çıkan <code>github_pat_…</code> anahtarını kopyala.</li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <h3><i>3</i>Şifrele</h3>
+      <p>Anahtar, belirlediğin şifreyle şifrelenir. Sonrasında sen ve Hakan sadece bu şifreyi kullanırsınız.</p>
+      <div class="inner">
+        <label class="field"><span>Depo adı</span>
+          <input id="repo" placeholder="kullaniciadin/apartman-veri" spellcheck="false"></label>
+        <label class="field"><span>GitHub anahtarı</span>
+          <input id="token" type="password" placeholder="github_pat_..." spellcheck="false" autocomplete="off"></label>
+        <label class="field"><span>Ortak şifre</span>
+          <input id="pass" type="text" placeholder="En az 10 karakter" spellcheck="false" autocomplete="off">
+          <small>Basit şifre seçme (1234, apartman gibi). Bir cümle kullan: <code>terra-panorama-2026-kasa</code></small></label>
+        <label class="field"><span>Şifre (tekrar)</span>
+          <input id="pass2" type="text" spellcheck="false" autocomplete="off"></label>
+        <button id="go" class="btn btn-primary btn-block">Şifrele ve dosyayı üret</button>
+        <p id="err" class="gate-err" hidden></p>
+      </div>
+    </div>
+
+    <div id="out" hidden>
+      <div class="sep"></div>
+      <div class="step">
+        <h3><i>4</i>Son adım</h3>
+        <p>Aşağıdaki içeriği projedeki <code>vault.js</code> dosyasının içine <b>tamamen</b> yapıştır, kaydet ve GitHub'a yükle. Bitti.</p>
+        <div class="inner">
+          <pre id="vaultOut"></pre>
+          <button id="copy" class="btn">Kopyala</button>
+          <button id="dl" class="btn">vault.js olarak indir</button>
+        </div>
+      </div>
+    </div>
+
+  </div></div>
+</div>
+
+<script src="assets/setup.js"></script>
+</body>
+</html>

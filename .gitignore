@@ -1,0 +1,10 @@
+# Malik isimleri içerir — herkese açık depoya YÜKLENMEZ.
+# Bu klasördeki data.json yalnızca özel veri deposuna elle yüklenir.
+ozel-repoya-yukle/
+
+# Kaynak Excel
+*.xlsx
+
+# Yerel test
+_test.html
+.DS_Store
