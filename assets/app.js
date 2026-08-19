@@ -4,7 +4,7 @@
    ══════════════════════════════════════════════════════════════ */
 
 const CFG = window.APP_CONFIG;
-const VAULT = window.APP_VAULT;
+let VAULT = window.APP_VAULT;
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
@@ -803,7 +803,19 @@ async function boot(token, user) {
   return true;
 }
 
-(function init() {
+/* Tarayıcı eski vault.js'i önbellekten vermiş olabilir — taze bir kopya dene. */
+async function refreshVault() {
+  if (VAULT) return;
+  try {
+    const r = await fetch(`vault.js?t=${Date.now()}`, { cache: "no-store" });
+    if (!r.ok) return;
+    new Function(await r.text())();
+    VAULT = window.APP_VAULT;
+  } catch (_) {}
+}
+
+(async function init() {
+  await refreshVault();
   if (!VAULT) {
     document.body.innerHTML = `<div class="gate"><div class="gate-card" style="text-align:center">
       <h1 style="font-size:17px;margin-bottom:8px">Kurulum tamamlanmadı</h1>
